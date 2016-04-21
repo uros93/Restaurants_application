@@ -1,0 +1,12 @@
+<div class="well"><h3><%= @critic.restaurant.name %></h3>
+<h1><%= @critic.title %></h1>
+<p><%= @critic.content %></p>
+<h5><%= @critic.user.nick %></h5>
+<%= link_to "Back to #{@critic.restaurant.name}" , restaurant_path(@critic.restaurant.id) %><br>
+<%if can? :destroy, @critic %>
+<%= link_to "Delete critic", restaurant_critic_path(@critic.restaurant.id, @critic), method: :delete %><br>
+<% end %>
+<%if can? :update, @critic %>
+<%= link_to "Edit critic", edit_restaurant_critic_path(@critic.restaurant.id, @critic) %><br>
+<% end %>
+</div>

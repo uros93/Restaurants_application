@@ -1,0 +1,17 @@
+
+<div class="container">
+<div class="jumbotron">
+<h1 class="text-primary"><%= @restaurant.name %></h1>
+<%= @numberofvotes %>
+<%= link_to "+", "#{@restaurant.id}/vote/for" %>
+<%= link_to "-", "#{@restaurant.id}/vote/against" %>
+<p><%= @restaurant.description %></p>
+<h3><%= @restaurant.adresa %></h3>
+<%if can? :update, @restaurant %>
+<%= link_to "Edit", edit_restaurant_path(@restaurant) %>
+<%end%>
+</div>
+</div>
+<%= link_to "Add critic", new_restaurant_critic_path(@restaurant), :class => "btn btn-default" %>
+<%= link_to "Back to restaurants", restaurants_path, :class => "btn btn-default" %><br>
+<%= render :partial => 'critics/index', :locals=>{:critics => @restaurant.critics.all, :restaurant => @restaurant} %>

@@ -1,0 +1,11 @@
+
+	<% @restaurants.each do |r| %>
+	<div class="panel panel-warning">
+	<div class="panel-heading"><%= link_to r.name, restaurant_path(r.id) %></div>
+	<div class="panel-body"><%= r.description %></div>
+	<h5 class="text-center"><%= r.adresa %></h5>
+	<% if can? :destroy, r %>
+	<%= link_to "Delete", restaurant_path(r.id), method: :delete %>
+	<%end%>
+	</div>
+<%end%>

@@ -1,0 +1,5 @@
+== RESTAURANTS APPLICATION
+
+Application for viewing and grading restaurants that has implemented authentication using devise gem and authorization using cancan gem. Users can view restaurants, create/update/delete their own critics and grade restaurant while admin can manage all.
+
+

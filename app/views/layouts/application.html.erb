@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Restaurants</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+ <div class="notice text-info"><%= notice %></div>
+ <div class="alert text-info"><%= alert %></div>
+ <nav class="navbar navbar-default">
+	<div class="container-fluid">
+    	<div class="navbar-header">
+		 <ul class="nav navbar-nav">
+		 <% if user_signed_in? %>
+		 	<li class="navbar-brand">Welcome <%= current_user.nick %></li>
+		 	
+		 	<li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+			<%if can? :create, Restaurant %>
+				<li><%= link_to "New restaurant", new_restaurant_path %></li>
+			<%end%>
+			<li><%= link_to "Edit profile", edit_user_registration_path %></li>
+			
+		 <%else%>
+		 	<li><%= link_to "Sign in", new_user_session_path %></li>
+			<li><%= link_to "Sign up", new_user_registration_path %></li>
+			
+		 <%end%>
+		 </ul>
+	 	</div>
+	 </div>
+</nav>
+<div class="container">
+<%= yield %>
+</div>
+</body>
+</html>
